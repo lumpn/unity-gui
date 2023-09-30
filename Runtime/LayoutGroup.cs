@@ -1,8 +1,12 @@
+//----------------------------------------
+// MIT License
+// Copyright(c) 2023 Jonas Boetel
+//----------------------------------------
 using UnityEngine;
 
 namespace Lumpn.UGUI
 {
-    public sealed class VerticalLayoutGroup : MonoBehaviour
+    public sealed class LayoutGroup : MonoBehaviour
     {
         [System.Serializable]
         public struct RectOffset
