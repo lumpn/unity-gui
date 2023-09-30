@@ -1,7 +1,7 @@
 {
   "name": "de.lumpn.unity-gui",
   "version": "0.1.0",
-  "displayName": "GUI",
+  "displayName": "Lumpn GUI",
   "description": "Layout functionality for Unity UI.",
   "dependencies": {
     "com.unity.ugui": "1.0.0"
