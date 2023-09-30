@@ -5,7 +5,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Lumpn.GUI
+namespace Lumpn.UGUI
 {
     public abstract class Editor<T> : Editor where T : Object
     {
@@ -14,7 +14,7 @@ namespace Lumpn.GUI
             base.OnInspectorGUI();
 
             EditorGUILayout.Separator();
-            EditorGUILayout.BeginVertical(UnityEngine.GUI.skin.box);
+            EditorGUILayout.BeginVertical(GUI.skin.box);
             OnInspectorGUI((T)target);
             EditorGUILayout.EndVertical();
         }

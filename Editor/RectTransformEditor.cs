@@ -5,17 +5,13 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEditor.UI;
 
-public sealed class RectTransformEditor : Editor
+namespace Lumpn.UGUI
 {
-    // Start is called before the first frame update
-    void Start()
+    //[CustomEditor(typeof(RectTransform))]
+    public sealed class RectTransformEditor : Editor<RectTransform>
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void OnInspectorGUI(RectTransform target)
+        {
+        }
     }
 }
