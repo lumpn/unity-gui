@@ -1,0 +1,33 @@
+{
+  "name": "de.lumpn.unity-gui",
+  "version": "0.1.0",
+  "displayName": "GUI",
+  "description": "Layout functionality for Unity UI.",
+  "dependencies": {
+    "com.unity.ugui": "1.0.0"
+  },
+  "keywords": [
+    "lumpn",
+    "ui",
+    "gui",
+    "anchor",
+    "anchors",
+    "pivot",
+    "layout",
+    "layoutgroup",
+    "horizontallayoutgroup",
+    "verticallayoutgroup",
+    "gridlayoutgroup",
+    "recttransform"
+  ],
+  "author": {
+    "name": "Jonas Boetel",
+    "url": "https://github.com/lumpn"
+  },
+  "samples": [
+    {
+      "displayName": "Layout Samples",
+      "path": "Samples~/LayoutSamples"
+    }
+  ]
+}
