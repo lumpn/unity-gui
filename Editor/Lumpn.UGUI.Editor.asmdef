@@ -1,7 +1,9 @@
 {
     "name": "Lumpn.UGUI.Editor",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:e3b9362352bc80f4c90331b5043fa57b"
+    ],
     "includePlatforms": [
         "Editor"
     ],

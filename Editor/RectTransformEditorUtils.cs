@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//----------------------------------------
+// MIT License
+// Copyright(c) 2023 Jonas Boetel
+//----------------------------------------
 using UnityEditor;
+using UnityEngine;
 
 namespace Lumpn.UGUI
 {
@@ -10,13 +12,9 @@ namespace Lumpn.UGUI
         [MenuItem("CONTEXT/RectTransform/Match Pivot")]
         public static void MatchPivot(MenuCommand cmd)
         {
-            var context = cmd.context;
-            Debug.Log(context.GetType());
-
-            if (context is RectTransform rectTransform)
+            if (cmd.context is RectTransform rectTransform)
             {
-                var parent = rectTransform.parent as RectTransform;
-                if (parent)
+                if (rectTransform.parent is RectTransform parent)
                 {
                     var pivot = parent.pivot;
                     rectTransform.anchorMin = pivot;
