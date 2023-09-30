@@ -1,7 +1,7 @@
 {
-  "name": "de.lumpn.unity-gui",
+  "name": "de.lumpn.unity-ugui",
   "version": "0.1.0",
-  "displayName": "Lumpn GUI",
+  "displayName": "Lumpn UGUI",
   "description": "Layout functionality for Unity UI.",
   "dependencies": {
     "com.unity.ugui": "1.0.0"
@@ -10,6 +10,7 @@
     "lumpn",
     "ui",
     "gui",
+    "ugui",
     "anchor",
     "anchors",
     "pivot",

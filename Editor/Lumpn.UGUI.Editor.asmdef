@@ -1,5 +1,7 @@
 {
-    "name": "Lumpn.GUI.Editor",
+    "name": "Lumpn.UGUI.Editor",
+    "rootNamespace": "",
+    "references": [],
     "includePlatforms": [
         "Editor"
     ],
