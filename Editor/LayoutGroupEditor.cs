@@ -56,7 +56,6 @@ namespace Lumpn.UGUI
 
                 child.anchoredPosition = new Vector2(tap.left - sdX * (j + 0.5f) + tas * j, (tap.bottom - tap.top) / 2);
                 child.sizeDelta = -sd;
-                child.pivot = new Vector2(0.5f, 0.5f);
 
                 EditorUtility.SetDirty(child);
             }
@@ -91,7 +90,6 @@ namespace Lumpn.UGUI
 
                 child.anchoredPosition = new Vector2((tap.left - tap.right) / 2, tap.bottom - sdY * (j + 0.5f) + tas * j);
                 child.sizeDelta = -sd;
-                child.pivot = new Vector2(0.5f, 0.5f);
 
                 EditorUtility.SetDirty(child);
             }
