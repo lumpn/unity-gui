@@ -5,12 +5,26 @@ namespace Lumpn.UGUI
     public sealed class VerticalLayoutGroup : MonoBehaviour
     {
         [System.Serializable]
-        private struct RectOffset
+        public struct RectOffset
         {
-            [SerializeField] float left, right, top, bottom;
+            [SerializeField] float _left, _right, _top, _bottom;
+
+            public float left => _left;
+            public float right => _right;
+            public float top => _top;
+            public float bottom => _bottom;
         }
 
-        [SerializeField] private RectOffset padding;
-        [SerializeField] private float spacing;
+        [SerializeField] private RectOffset _relativePadding;
+        [SerializeField] private float _relativeSpacing;
+
+        [SerializeField] private RectOffset _absolutePadding;
+        [SerializeField] private float _absoluteSpacing;
+
+        public RectOffset relativePadding => _relativePadding;
+        public float relativeSpacing => _relativeSpacing;
+
+        public RectOffset absolutePadding => _absolutePadding;
+        public float absoluteSpacing => _absoluteSpacing;
     }
 }
