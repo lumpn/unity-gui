@@ -2,7 +2,10 @@
 // MIT License
 // Copyright(c) 2023 Jonas Boetel
 //----------------------------------------
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Lumpn.UGUI
 {
@@ -25,7 +28,7 @@ namespace Lumpn.UGUI
         public void FitHorizontal()
         {
             var rectTransform = (RectTransform)transform;
-            var childCount = rectTransform.childCount;
+            var childCount = GetChildren(rectTransform).Count();
 
             var size = childCount * childSize.x;
             size += absolutePadding.left;
@@ -38,7 +41,7 @@ namespace Lumpn.UGUI
         public void FitVertical()
         {
             var rectTransform = (RectTransform)transform;
-            var childCount = rectTransform.childCount;
+            var childCount = GetChildren(rectTransform).Count();
 
             var size = childCount * childSize.y;
             size += absolutePadding.top;
@@ -50,8 +53,8 @@ namespace Lumpn.UGUI
 
         public void ApplyHorizontal()
         {
-            var rectTransform = (RectTransform)transform;
-            var childCount = rectTransform.childCount;
+            var children = GetChildren(transform).ToArray();
+            var childCount = children.Length;
             if (childCount < 1) return;
 
             var rp = relativePadding;
@@ -69,7 +72,7 @@ namespace Lumpn.UGUI
 
             for (int i = childCount - 1; i >= 0; i--)
             {
-                var child = rectTransform.GetChild(i) as RectTransform;
+                var child = children[i];
 
                 var j = (childCount - 1) - i;
                 child.anchorMin = new Vector2(anchorMin.x + anchorStepX * j, anchorMin.y);
@@ -82,8 +85,8 @@ namespace Lumpn.UGUI
 
         public void ApplyVertical()
         {
-            var rectTransform = (RectTransform)transform;
-            var childCount = rectTransform.childCount;
+            var children = GetChildren(transform).ToArray();
+            var childCount = children.Length;
             if (childCount < 1) return;
 
             var rp = relativePadding;
@@ -101,7 +104,7 @@ namespace Lumpn.UGUI
 
             for (int i = childCount - 1; i >= 0; i--)
             {
-                var child = rectTransform.GetChild(i) as RectTransform;
+                var child = children[i];
 
                 var j = (childCount - 1) - i;
                 child.anchorMin = new Vector2(anchorMin.x, anchorMin.y + anchorStepY * j);
@@ -110,6 +113,20 @@ namespace Lumpn.UGUI
                 child.anchoredPosition = new Vector2((tap.left - tap.right) / 2, tap.bottom - sdY * (j + 0.5f) + tas * j);
                 child.sizeDelta = -sd;
             }
+        }
+
+        private static IEnumerable<RectTransform> GetChildren(Transform parent)
+        {
+            return parent.Cast<RectTransform>().Where(ObservesLayout);
+        }
+
+        private static bool ObservesLayout(Transform transform)
+        {
+            if (transform.TryGetComponent<ILayoutIgnorer>(out var ignorer))
+            {
+                return !ignorer.ignoreLayout;
+            }
+            return true;
         }
     }
 }
