@@ -74,11 +74,10 @@ namespace Lumpn.UGUI
             {
                 var child = children[i];
 
-                var j = (childCount - 1) - i;
-                child.anchorMin = new Vector2(anchorMin.x + anchorStepX * j, anchorMin.y);
-                child.anchorMax = new Vector2(anchorMin.x + anchorStepX * j + anchorSpaceX, anchorMax.y);
+                child.anchorMin = new Vector2(anchorMin.x + anchorStepX * i, anchorMin.y);
+                child.anchorMax = new Vector2(anchorMin.x + anchorStepX * i + anchorSpaceX, anchorMax.y);
 
-                child.anchoredPosition = new Vector2(tap.left - sdX * (j + 0.5f) + tas * j, (tap.bottom - tap.top) / 2);
+                child.anchoredPosition = new Vector2(tap.left - sdX * (i + 0.5f) + tas * i, (tap.bottom - tap.top) / 2);
                 child.sizeDelta = -sd;
             }
         }
