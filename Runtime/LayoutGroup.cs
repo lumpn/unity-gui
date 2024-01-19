@@ -51,7 +51,7 @@ namespace Lumpn.UGUI
             rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size);
         }
 
-        public void ApplyHorizontal()
+        public void ApplyHorizontal(bool reverse)
         {
             var children = GetChildren(transform).ToArray();
             var childCount = children.Length;
@@ -70,9 +70,10 @@ namespace Lumpn.UGUI
             var sdX = (tap.left + tap.right + tas * (childCount - 1)) / childCount;
             var sd = new Vector2(sdX, tap.top + tap.bottom);
 
-            for (int i = childCount - 1; i >= 0; i--)
+            for (int j = childCount - 1; j >= 0; j--)
             {
-                var child = children[i];
+                var child = children[j];
+                var i = reverse ? (childCount - 1 - j) : j;
 
                 child.anchorMin = new Vector2(anchorMin.x + anchorStepX * i, anchorMin.y);
                 child.anchorMax = new Vector2(anchorMin.x + anchorStepX * i + anchorSpaceX, anchorMax.y);
@@ -82,7 +83,7 @@ namespace Lumpn.UGUI
             }
         }
 
-        public void ApplyVertical()
+        public void ApplyVertical(bool reverse)
         {
             var children = GetChildren(transform).ToArray();
             var childCount = children.Length;
@@ -101,15 +102,15 @@ namespace Lumpn.UGUI
             var sdY = (tap.top + tap.bottom + tas * (childCount - 1)) / childCount;
             var sd = new Vector2(tap.left + tap.right, sdY);
 
-            for (int i = childCount - 1; i >= 0; i--)
+            for (int j = childCount - 1; j >= 0; j--)
             {
-                var child = children[i];
+                var child = children[j];
+                var i = reverse ? (childCount - 1 - j) : j;
 
-                var j = (childCount - 1) - i;
-                child.anchorMin = new Vector2(anchorMin.x, anchorMin.y + anchorStepY * j);
-                child.anchorMax = new Vector2(anchorMax.x, anchorMin.y + anchorStepY * j + anchorSpaceY);
+                child.anchorMin = new Vector2(anchorMin.x, anchorMin.y + anchorStepY * i);
+                child.anchorMax = new Vector2(anchorMax.x, anchorMin.y + anchorStepY * i + anchorSpaceY);
 
-                child.anchoredPosition = new Vector2((tap.left - tap.right) / 2, tap.bottom - sdY * (j + 0.5f) + tas * j);
+                child.anchoredPosition = new Vector2((tap.left - tap.right) / 2, tap.bottom - sdY * (i + 0.5f) + tas * i);
                 child.sizeDelta = -sd;
             }
         }

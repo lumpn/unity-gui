@@ -10,20 +10,24 @@ namespace Lumpn.UGUI
     [CustomEditor(typeof(LayoutGroup))]
     public sealed class LayoutGroupEditor : Editor<LayoutGroup>
     {
+        [SerializeField] private bool reverse;
+
         public override void OnInspectorGUI(LayoutGroup target)
         {
+            reverse = EditorGUILayout.Toggle("Reverse", reverse);
+
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel("Apply Layout");
 
             if (GUILayout.Button("Horizontal"))
             {
-                target.ApplyHorizontal();
+                target.ApplyHorizontal(reverse);
                 EditorUtility.SetDirty(target);
             }
 
             if (GUILayout.Button("Vertical"))
             {
-                target.ApplyVertical();
+                target.ApplyVertical(reverse);
                 EditorUtility.SetDirty(target);
             }
 
